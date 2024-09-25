@@ -1,0 +1,15 @@
+certifi==2024.8.30
+charset-normalizer==3.3.2
+dnspython==2.6.1
+docker==7.1.0
+idna==3.10
+neo4j==5.24.0
+psycopg2==2.9.9
+pymongo==4.9.1
+pytz==2024.2
+requests==2.32.3
+SQLAlchemy==2.0.35
+testcontainers==4.8.1
+typing_extensions==4.12.2
+urllib3==2.2.3
+wrapt==1.16.0
