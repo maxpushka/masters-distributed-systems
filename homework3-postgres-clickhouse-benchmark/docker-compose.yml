@@ -1,0 +1,19 @@
+version: '3'
+services:
+  clickhouse:
+    image: yandex/clickhouse-server:latest
+    container_name: clickhouse
+    ports:
+      - "8123:8123" # HTTP порт
+      - "9000:9000" # Native TCP порт
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: shop_db
+    ports:
+      - "5432:5432"
+
