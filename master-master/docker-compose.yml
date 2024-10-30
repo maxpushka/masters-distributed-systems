@@ -1,0 +1,36 @@
+services:
+  mysql1:
+    image: mysql:5.7.14
+    container_name: mysql1
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql1pass
+      MYSQL_DATABASE: mydata
+    ports:
+      - "33061:3306"
+    volumes:
+      - ./server1/conf.d:/etc/mysql/mysql.conf.d
+      - ./server1/backup:/backup
+    hostname: mysql1
+    networks:
+      - mysql_network
+
+  mysql2:
+    image: mysql:5.7.14
+    container_name: mysql2
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql2pass
+      MYSQL_DATABASE: mydata
+    ports:
+      - "33062:3306"
+    volumes:
+      - ./server2/conf.d:/etc/mysql/mysql.conf.d
+      - ./server2/backup:/backup
+    hostname: mysql2
+    networks:
+      - mysql_network
+    depends_on:
+      - mysql1
+
+networks:
+  mysql_network:
+    driver: bridge
