@@ -1,7 +1,6 @@
-version: '3'
 services:
   clickhouse:
-    image: yandex/clickhouse-server:latest
+    image: clickhouse/clickhouse-server:24.3.13.40
     container_name: clickhouse
     ports:
       - "8123:8123" # HTTP порт

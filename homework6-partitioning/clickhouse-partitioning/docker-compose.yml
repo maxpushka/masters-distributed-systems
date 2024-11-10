@@ -1,0 +1,50 @@
+services:
+  chnode1:
+    image: clickhouse/clickhouse-server:24.3.13.40
+    container_name: chnode1
+    volumes:
+      - ./chnode1:/etc/clickhouse-server/config.d
+    environment:
+      - CLICKHOUSE_LOG_LEVEL=debug
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+      - "9009:9009"
+      - "9181:9181"
+    networks:
+      - clickhouse-network
+
+  chnode2:
+    image: clickhouse/clickhouse-server:24.3.13.40
+    container_name: chnode2
+    volumes:
+      - ./chnode2:/etc/clickhouse-server/config.d
+    environment:
+      - CLICKHOUSE_LOG_LEVEL=debug
+    ports:
+      - "8124:8123"
+      - "9001:9000"
+      - "9010:9009"
+      - "9182:9181"
+    networks:
+      - clickhouse-network
+
+  chnode3:
+    image: clickhouse/clickhouse-server:24.3.13.40
+    container_name: chnode3
+    volumes:
+      - ./chnode3:/etc/clickhouse-server/config.d
+    environment:
+      - CLICKHOUSE_LOG_LEVEL=debug
+    ports:
+      - "8125:8123"
+      - "9002:9000"
+      - "9011:9009"
+      - "9183:9181"
+    networks:
+      - clickhouse-network
+
+networks:
+  clickhouse-network:
+    driver: bridge
+
